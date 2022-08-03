@@ -1,11 +1,20 @@
 Fix RouterSploit Termux
-1 python -m pip install wheel
-2 pkg install rust
-3 export CARGO_BUILD_TARGET=arm7-linux-androideabi && pip install cryptography Learn phone architecture rustc -vV
-4 git clone https://github.com/Alekc74/FixRoutersploit.git
-5 cd FixRoutersploit
-6 chmod +x script.sh
-7 ./script.sh
-8 cd $Home
-9 cd routersploit
-10 python3 rsf.py
+1 termux-change-repo
+2 pkg upgrade
+3 termux-change-repo
+4 pkg install python
+5 pkg install wget
+6 pkg install git
+7 pip install wheel
+8 pkg install rust
+9 export CARGO_BUILD_TARGET="$(rustc -Vv | grep "host" | awk '{print $2}')"
+10 pip install cryptography
+11 git clone https://github.com/Alekc74/FixRoutersploit.git
+12 cd FixRoutersploit
+13 chmod +x script.sh
+14 ./script.sh
+15 cd $Home
+16 cd routersploit
+17 pip install -r requirements.txt
+18 pip install -r requirements-dev.txt
+19 python3 rsf.py
